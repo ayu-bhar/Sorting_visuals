@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual sorts</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script..js"></script>
+    <style>
+        .question{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .question input{
+            width: 200px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body onload="addEvent()">
+    <div class="container"></div>
+    <div class="question">
+        <input type="number" id="i" name = "i" placeholder="Enter number of entries"/>
+    </div>
+    <div class="buttons">
+        <button onclick="fill()">New queries</button>
+        <button onclick="countSort()">Count sort</button>
+        <button onclick="selectionSort()">Selection sort</button>
+        <button onclick="insertionSort()">Insertion sort</button>
+        <button onclick="quickSort()">Quick Sort</button>
+        <button onclick="bubbleSort()">Bubble Sort</button>
+        <button onclick="mergeSort()">Merge Sort</button>
+        <button onclick="sbkaSort()">Sbka Sort</button>
+        <button onclick="deSort()">De Sort</button>
+    </div>
+</body>
+</html>
