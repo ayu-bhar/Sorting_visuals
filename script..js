@@ -37,16 +37,23 @@ function updateDisplay() {
 }
 async function changeBox(l, r) {
     return new Promise((resolve) => {
+        b[l].style.backgroundColor = "red";
+        if (r != -1) {
+            b[r].style.backgroundColor = "red";
+        }
+
         setTimeout(() => {
+            b[l].style.height = a[l] + "px";
             if (r != -1) {
-                b[l].style.height = a[l] + "px";
                 b[r].style.height = a[r] + "px";
             }
-            else{
-                b[l].style.height = a[l] + "px";
+            b[l].style.backgroundColor = "";
+            if (r != -1) {
+                b[r].style.backgroundColor = "";
             }
+
             resolve();
-        }, 50);
+        }, 30);
     });
 }
 async function bubbleSort() {
@@ -200,5 +207,28 @@ function deSort(){
     a = [...copy];
     for(let i = 0;i<n;i++){
         b[i].style.height = a[i] + "px";
+    }
+}
+async function raddixSort(){
+    let max = Math.max(...a);
+    let exp = 1;
+    while (Math.floor(max / exp) > 0) {
+        await countSortRadix(exp);
+        exp *= 10;
+    }
+}
+async function countSortRadix(exp){
+    let tem = [[],[],[],[],[],[],[],[],[],[]];
+    for(let i = 0;i<n;i++){
+        let index = Math.floor(a[i]/exp)%10;
+        tem[index].push(a[i]);
+    }
+    let index = 0;
+    for(let i = 0;i<10;i++){
+        for(let j = 0;j<tem[i].length;j++){
+            a[index] = tem[i][j];
+            await changeBox(index,-1);
+            index++;
+        }
     }
 }
